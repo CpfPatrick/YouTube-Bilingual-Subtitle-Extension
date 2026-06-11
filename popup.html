@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      width: 240px;
+      margin: 0;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: #1f1f1f;
+    }
+    .row { display: flex; align-items: center; justify-content: space-between; }
+    .title { font-weight: 600; }
+    .switch { position: relative; width: 36px; height: 20px; flex: none; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; inset: 0; cursor: pointer;
+      background: #ccc; border-radius: 20px; transition: background 0.15s;
+    }
+    .slider::before {
+      content: ""; position: absolute; width: 16px; height: 16px;
+      left: 2px; top: 2px; background: #fff; border-radius: 50%;
+      transition: transform 0.15s;
+    }
+    input:checked + .slider { background: #1a73e8; }
+    input:checked + .slider::before { transform: translateX(16px); }
+    #warning {
+      display: none;
+      color: #d93025;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+    #warning.show { display: block; }
+    #status {
+      color: #666;
+      margin-top: 10px;
+      line-height: 1.4;
+      min-height: 16px;
+    }
+    #status.active { color: #188038; }
+    #status.problem { color: #d93025; }
+    a { color: #1a73e8; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <span class="title">Bilingual subtitles</span>
+    <label class="switch">
+      <input type="checkbox" id="enabled">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <div id="warning">API key not set — open settings to add your DeepSeek key.</div>
+  <div id="status"></div>
+  <a id="openOptions">Settings</a>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* Native captions stay enabled (the interception pipeline depends on the
+   player fetching timedtext) but are hidden whenever the extension is
+   actively rendering — removing the attribute instantly restores them. */
+html[data-bsub="on"] .ytp-caption-window-container {
+  display: none !important;
+}
+
+#bsub-overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8%;
+  max-width: 85%;
+  width: max-content;
+  text-align: center;
+  z-index: 59;
+  pointer-events: none;
+  line-height: 1.35;
+  font-family: "YouTube Noto", Roboto, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+
+#bsub-overlay .bsub-line {
+  display: none;
+}
+
+/* display:table shrink-wraps each pill to its text and centers it,
+   while still wrapping long lines within the overlay's max-width. */
+#bsub-overlay .bsub-line.bsub-visible {
+  display: table;
+  margin: 3px auto 0;
+  max-width: 100%;
+  background: rgba(8, 8, 8, 0.75);
+  padding: 0.12em 0.45em;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  color: #fff;
+}
+
+#bsub-overlay .bsub-en {
+  font-size: 0.88em;
+  opacity: 0.94;
+}
+
+#bsub-overlay .bsub-zh {
+  font-size: 1.02em;
+}
+
+#bsub-overlay .bsub-notice {
+  font-size: 0.8em;
+  font-style: italic;
+  opacity: 0.9;
+}
